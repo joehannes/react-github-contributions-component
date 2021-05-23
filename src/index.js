@@ -129,7 +129,7 @@ function GithubContributionCount({userName, toDate, fromDate, theme, vertical}) 
                     style={{fontFamily: 'Helvetica', fontSize: '14px'}}
                     fill={colors[theme].plainFont}
                     x="15"
-                    y={vertical ?  2 + width / 1.6 : 134}>Total contributions in {monthData[0].year}:
+                    y={vertical ?  2 + width / 1.6 : 134}>Total contributions in {(fromDate.getFullYear() === toDate.getFullYear()) ? monthData[0].year : `${fromDate.getFullYear()}/${toDate.getFullYear()}`}:
                 </text>
                 <text
                     style={{fontFamily: 'Helvetica', fontSize: '16px', fontWeight: 'bold'}}
@@ -200,13 +200,13 @@ function GithubContribution ({
                 {legend &&
                   <svg width="640" height="10">
                       <polyline
-                          onClick={e => nextYear(e)}
+                          onClick={e => pastYear(e)}
                           points="280, 0 270, 5 280, 10"
                           stroke={colors[theme].highlightedFont}
                           strokeWidth="4"
                           fill="none" />
                       <polyline
-                          onClick={e => pastYear(e)}
+                          onClick={e => nextYear(e)}
                           points="360, 0 370, 5 360, 10"
                           stroke={colors[theme].highlightedFont}
                           strokeWidth="4"
